@@ -21,6 +21,7 @@ const Hero = ({ hero }) => {
         <p>💾<a href={hero.gitHub}>
             GitHub
           </a></p>
+        <p>{hero.aboutMe}</p>
       </div>
     </div>
   );

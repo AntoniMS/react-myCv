@@ -7,44 +7,49 @@ import { CV } from "./CV/Cv";
 const { hero, education, experience, languages, habilities } = CV;
 
 function App() {
-  const [showEducation, setShowEducation] = useState(true);
+  const [showBox, setShowBox] = useState("education");
 
   return (
     <div className="App">
-      <Hero hero={hero} />
+      <div className="div">
+        <Hero hero={hero} />
+      </div>
       <nav>
         <div className="div">
-
-  
-            <button
-              className="button btn"
-              onClick={() => setShowEducation(true)}
-            >
-              Educación
-            </button>
-            <button
-              className="button btn"
-              onClick={() => setShowEducation(false)}
-            >
-              Experiencia
-            </button>
+          <button
+            className="button btn"
+            onClick={() => setShowBox("education")}
+          >
+            Educación
+          </button>
+          <button
+            className="button btn"
+            onClick={() => setShowBox("experience")}
+          >
+            Experiencia
+          </button>
+          <button
+            className="button btn"
+            onClick={() => setShowBox("more")}
+          >
+            Aptitudes
+          </button>
 
         </div>
       </nav>
-      <div>
-        {showEducation ? (
-          <Education education={education} />
-        ) : (
-          <Experience experience={experience} />
-        )}
-      </div>
-      <More
-        languages={languages}
-        habilities={habilities}
-       
-      />
-      <br />
-      <br />
+
+      {
+        <div className="div">
+          {showBox === "education" ? (
+            <Education education={education} />
+          ) : showBox === "experience" ? (
+            <Experience experience={experience} />
+          ) : showBox === "more" ? (
+            <More languages={languages} habilities={habilities} />
+
+          ) : null}
+        </div>
+      }
     </div>
   );
 }
